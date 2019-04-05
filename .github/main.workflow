@@ -1,15 +1,12 @@
-workflow "Build JSON From Universe" {
+workflow "Build JSON" {
   resolves = ["../action/"]
   on = "schedule(0 22 * * *)"
 }
 
 action "../action/" {
   uses = "./action"
-  secrets = [
-    "TOKEN",
-    "MAILGUN_API_KEY",
-  ]
   env = {
     PAGES_BRANCH = "master"
   }
+  secrets = ["TOKEN"]
 }
